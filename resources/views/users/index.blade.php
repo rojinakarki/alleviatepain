@@ -34,6 +34,9 @@
                                     <th scope="col" class="relative px-6 py-3">
                                         <span class="sr-only">Edit</span>
                                     </th>
+                                    <th scope="col" class="relative px-6 py-3">
+                                        <span class="sr-only">Delete</span>
+                                    </th>
 
                                 </tr>
                                 </thead>
@@ -62,10 +65,17 @@
                                         {{$user->role}}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="{{ route('users.show',$user->id) }}" class="text-indigo-600 hover:text-indigo-900">Show</a>
+                                        <a href="{{ route('users.show',$user) }}" class="text-indigo-600 hover:text-indigo-900">Show</a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="{{ route('users.edit',$user->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                        <a href="{{ route('users.edit',$user) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <form class="inline-block" action="{{ route('users.destroy',$user->id) }}" method="POST">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                            <input type="submit" value="Delete" class="text-red-600 hover:text-red-900 mb-2">
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -32,6 +32,7 @@ class StoreUserRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone_number' => ['required', 'string', 'unique:users'],
+            'role'=>['required','in:Free user,Prime user,AP user,PM user,Admin,Super admin'],
             'password' => $this->passwordRules(),
         ];
     }

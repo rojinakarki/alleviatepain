@@ -26,6 +26,18 @@
                         <x-jet-label for="phone_number" value="{{ __('Phone Number') }}" />
                         <x-jet-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number" :value="old('phone_number')" required />
                     </div>
+                    <div class="mt-4">
+                        <x-jet-label for="role" value="{{ __('Role') }}" />
+                        <select name="role" id="role" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                            <option value="Free user" selected> Free User</option>
+                            <option value="Prime user">Prime User</option>
+                            <option value="AP user">Alleviate Pain User</option>
+                            <option value="PM user">Pain Mastery User</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Super admin">Super Admin</option>
+                        </select>
+                    </div>
+
                     <!-- Password -->
                     <div class="mt-4">
                         <x-jet-label for="password" value="{{ __('Password') }}" />
@@ -36,12 +48,11 @@
                         <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                         <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
                     </div>
-                <div class="mt-4">
-                    <x-jet-button class="bg-green-500 hover:bg-green-700 shadow-border p-3 text-white ">
-
-                        {{ __('Create User') }}
-                    </x-jet-button>
-                </div>
+                    <div class="mt-4">
+                        <x-jet-button class="bg-green-500 hover:bg-green-700 shadow-border p-3 text-white ">
+                            {{ __('Create User') }}
+                        </x-jet-button>
+                    </div>
             </form>
         </div>
     </div>

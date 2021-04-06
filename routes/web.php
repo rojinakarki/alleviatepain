@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,5 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::group(['middleware'=>'auth'], function(){
     Route::resources(['users' => UserController::class]);
+    Route::resources(['courses' => CourseController::class]);
+
 });
 
