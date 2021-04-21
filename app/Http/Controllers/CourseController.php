@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
@@ -24,7 +23,24 @@ class CourseController extends Controller
     public function store(StoreCourseRequest $request)
     {
         Course::create($request->validated());
+//       $attachment = new Attachment();
+//       $course ->attachment()->save($attachment);
         return redirect()->route('courses.index');
+
+
+//        $courses = Course::create([
+//           'course_title'=> $validated['course_title'],
+//           'course_description'=> $validated['course_description'],
+//           'course_category'=> $validated['course_category'],
+//           'course_type'=> $validated['course_type'],
+//           'course_cost'=> $validated['course_cost'],
+//           'course_duration'=> $validated['course_duration'],
+//           'sets'=> $validated['sets'],
+//           'reps'=> $validated['reps'],
+//           ]);
+//        $courses->attachment()->save($courses);
+
+
     }
 
     public function show(Course $course)

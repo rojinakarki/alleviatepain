@@ -20,5 +20,10 @@ class Course extends Model
         'reps',
     ];
 
+//  Course has many Module
+    public function courseHasManyModule()
+    {
+        return $this->hasMany(Module::class);
+    }
 
 }

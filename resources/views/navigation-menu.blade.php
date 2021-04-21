@@ -22,6 +22,19 @@
                         {{ __('Course List') }}
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link href="{{ route('modules.index') }}" :active="request()->routeIs('module.*')">
+                        {{ __('Module List') }}
+                    </x-jet-nav-link>
+
+
+                    <x-jet-nav-link href="{{ route('lessons.index') }}" :active="request()->routeIs('lesson.*')">
+                        {{ __('Lesson List') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('uploads.index') }}" :active="request()->routeIs('upload.*')">
+                        {{ __('Upload List') }}
+                    </x-jet-nav-link>
+
                 </div>
             </div>
 

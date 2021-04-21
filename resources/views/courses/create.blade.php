@@ -7,7 +7,8 @@
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <form method="POST" action="{{ route('courses.store') }}">
+            <form method="POST"  action="{{ route('courses.store') }}"
+                  x-data="{course_category:'education'}">
             @csrf
                 <!-- Course Title -->
                 <div class="mt-4">
@@ -21,12 +22,12 @@
                     <x-jet-input id="course_description" class="block mt-1 w-full" type="text" name="course_description" :value="old('course_description')" required />
                     <x-jet-input-error for="course_description" class="mt-2" />
                 </div>
-{{--                <div class="grid grid-flow-col auto-cols-max ">--}}
+
                     <!-- Course Category  -->
                     <div class="mt-4">
                         <x-jet-label for="course_category" value="{{ __('Course Category') }}" />
-                        <select name="course_category" id="course_category" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                            <option value="education" selected> Education</option>
+                        <select name="course_category" x-model="course_category" id="course_category" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                            <option value="education"> Education</option>
                             <option value="exercise"> Exercise</option>
                         </select>
                     </div>
@@ -35,7 +36,7 @@
                         <x-jet-label for="course_type" value="{{ __('Course Type') }}" />
                         <select name="course_type" id="course_type" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                             <option value="free" selected>Free</option>
-                            <option value="prime">Prime</option>
+                            <option value="premium">Premium</option>
                         </select>
                     </div>
 
@@ -47,19 +48,20 @@
                 </div>
                 <!-- Course Duration -->
                 <div class="mt-4">
-                    <x-jet-label for="course_duration" value="{{ __('Course Duration (months)') }}" />
+                    <x-jet-label for="course_duration" value="{{ __('Course Duration') }}" />
                     <x-jet-input id="course_duration" class="block mt-1 w-full" type="text" name="course_duration" :value="old('course_duration')" required />
                     <x-jet-input-error for="course_duration" class="mt-2" />
                 </div>
 
                 <!-- Sets  -->
-                <div class="mt-4">
+                <div class="mt-4" x-show="course_category == 'exercise'">
                     <x-jet-label for="sets" value="{{ __('Sets') }}" />
                     <x-jet-input id="sets" class="block mt-1 w-full" type="text" name="sets" :value="old('sets')"  />
                     <x-jet-input-error for="sets" class="mt-2" />
                 </div>
+
                 <!-- Reps -->
-                <div class="mt-4">
+                <div class="mt-4" x-show="course_category == 'exercise'">
                     <x-jet-label for="reps" value="{{ __('Reps') }}" />
                     <x-jet-input id="reps" class="block mt-1 w-full" type="text" name="reps" :value="old('reps')"  />
                     <x-jet-input-error for="reps" class="mt-2" />

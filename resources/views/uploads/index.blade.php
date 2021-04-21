@@ -1,15 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Course List') }}
+            {{ __('Upload List') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="block mb-8">
-                <a href="{{ route('courses.create') }}" class="bg-green-500 hover:bg-green-700 text-white"> Add New Course </a>
-            </div>
+{{--            <div class="block mb-8">--}}
+{{--                <a href="{{ route('lessons.create') }}" class="bg-green-500 hover:bg-green-700 text-white"> Add New Lesson </a>--}}
+{{--            </div>--}}
             <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -20,19 +20,11 @@
                                 <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Course Title
+                                        Uploads Info
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Course Category
+                                        Upload File
                                     </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Course Type
-                                    </th>
-
-                                    <th scope="col" class="relative px-6 py-3">
-                                        <span class="sr-only">Upload Content</span>
-                                    </th>
-
                                     <th scope="col" class="relative px-6 py-3">
                                         <span class="sr-only">Show</span>
                                     </th>
@@ -46,43 +38,32 @@
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach($courses as $course)
+                                @foreach($uploads as $upload)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="ml-4">
                                                     <div class="text-sm font-medium text-gray-900">
-                                                        {{$course->course_title}}
+                                                        {{$upload->upload_type}}
                                                     </div>
                                                     <div class="text-sm text-gray-500">
-                                                        {{$course->course_description}}
+                                                        {{$upload->video_url}}
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">
-                                                {{$course->course_category}}</div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{$course->course_type}}
-                                        </td>
-
+{{--                                        <td class="px-6 py-4 whitespace-nowrap">--}}
+{{--                                            <div class="text-sm text-gray-900">--}}
+{{--                                                {{$lesson->lesson_description}}</div>--}}
+{{--                                        </td>--}}
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <form class="createModule" method="get" action="{{ url('/modules/createModule',$course->id) }}">
-                                                <button class="btn btn-primary" type="submit"> Add Module</button>
-                                            </form>
-{{--                                            class="text-indigo-600 hover:text-indigo-900"--}}
-                                        </td>
-
-                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="{{ route('courses.show',$course) }}" class="text-indigo-600 hover:text-indigo-900">Show</a>
+                                            <a href="{{ route('uploads.show',$upload) }}" class="text-indigo-600 hover:text-indigo-900">Show</a>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="{{ route('courses.edit',$course) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                            <a href="{{ route('uploads.edit',$upload) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <form class="inline-block" action="{{ route('courses.destroy',$course->id) }}" method="POST">
+                                            <form class="inline-block" action="{{ route('uploads.destroy',$upload->id) }}" method="POST">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                                                 <input type="submit" value="Delete" class="text-red-600 hover:text-red-900 mb-2">

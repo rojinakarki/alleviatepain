@@ -14,7 +14,7 @@ class StoreCourseRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check();
+        return true;
     }
 
     /**
@@ -28,11 +28,11 @@ class StoreCourseRequest extends FormRequest
             'course_title' => ['required','string', 'max:255','unique:courses'],
             'course_description'=>['required', 'string'],
             'course_category'=>['required','in:education,exercise'],
-            'course_type'=>['required','in:free,prime'],
+            'course_type'=>['required','in:free,premium'],
             'course_cost'=>['required','string' ],
             'course_duration'=>['required', 'string'],
-            'reps'=>['required', 'string'],
-            'sets'=>['required', 'string'],
+            'reps'=>['nullable','string'],
+            'sets'=>['nullable','string'],
         ];
     }
 }

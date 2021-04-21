@@ -17,7 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('course_title');
             $table->enum('course_category',['education','exercise']);
-            $table->enum('course_type',['free','prime']);
+            $table->enum('course_type',['free','premium']);
             $table->string('course_description');
             $table->string('course_cost');
             $table->string('course_duration');
